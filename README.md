@@ -127,4 +127,8 @@ typedef struct binary_tree_s heap_t;
   - The parameter `parent` is a pointer to the node to insert the right-child in
   - And `value` is the value to store in the new node
   - It returns a pointer to the created node, or `NULL` on failure or if `parent` is `NULL`
-  - If `parent` already has a right-child, the new takes its place, and the old right-child is set as the right-child of the new node.
+
+**3. Delete**
+- [3-binary_tree_delete.c](./3-binary_tree_delete.c): A function that deletes an entire binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to delete
+  - If `tree` is NULL, do nothing
