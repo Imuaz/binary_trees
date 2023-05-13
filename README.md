@@ -183,3 +183,9 @@ typedef struct binary_tree_s heap_t;
   - The parameter `tree` is a pointer to the root node of the tree to count the number of leaves
   - If `tree` is `NULL`, the function returns `0`
   - A `NULL` pointer is not a leaf
+
+**13. Nodes**
+- [13-binary_tree_nodes.c](./13-binary_tree_nodes.c): A function that counts the nodes with at least 1 child in a binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to count the number of nodes
+  - If `tree` is `NULL`, the function returns `0`
+  - A `NULL` pointer is not a node
