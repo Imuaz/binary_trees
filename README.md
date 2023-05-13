@@ -172,3 +172,8 @@ typedef struct binary_tree_s heap_t;
 - [10-binary_tree_depth.c](./10-binary_tree_depth.c): A function that measures the depth of a node in a binary tree.
   - The parameter `tree` is a pointer to the node to measure the depth
   - If `tree` is `NULL`,the function returns `0`
+
+**11. Size**
+- [11-binary_tree_size.c](./11-binary_tree_size.c): A function that measures the size of a binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to measure the size
+  - If `tree` is `NULL`, the function returns `0`
