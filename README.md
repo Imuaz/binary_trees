@@ -156,3 +156,9 @@ typedef struct binary_tree_s heap_t;
   - The parameter `tree` is a pointer to the root node of the tree to traverse
   - And `func` is a pointer to a function to call for each node. The value in the node is pass as a parameter to this function.
   - If `tree` or `func` is `NULL`, does nothing
+
+  **8. Post-order traversal**
+  - [8-binary_tree_postorder.c](./8-binary_tree_postorder.c): A function that goes through a binary tree using post-order traversal.
+    - The parameter `tree` is a pointer to the root node of the tree to traverse
+    - And `func` is a pointer to a function to call for each node. The value in the node is pass as a parameter to this function.
+    - If `tree` or `func` is `NULL`, does nothing
