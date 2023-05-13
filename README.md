@@ -132,3 +132,12 @@ typedef struct binary_tree_s heap_t;
 - [3-binary_tree_delete.c](./3-binary_tree_delete.c): A function that deletes an entire binary tree.
   - The parameter `tree` is a pointer to the root node of the tree to delete
   - If `tree` is NULL, do nothing
+
+**4. Is leaf**
+- [4-binary_tree_is_leaf.c](./4-binary_tree_is_leaf.c): A function that checks if a node is a leaf.
+  - The parameter `node` is a pointer to the node to check
+  - It returns `1` if `node` is a leaf, otherwise `0`
+  - If `node` is `NULL`, return `0`
+
+**5. Is root**
+- 
