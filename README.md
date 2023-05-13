@@ -131,7 +131,7 @@ typedef struct binary_tree_s heap_t;
 **3. Delete**
 - [3-binary_tree_delete.c](./3-binary_tree_delete.c): A function that deletes an entire binary tree.
   - The parameter `tree` is a pointer to the root node of the tree to delete
-  - If `tree` is NULL, do nothing
+  - If `tree` is NULL, does nothing
 
 **4. Is leaf**
 - [4-binary_tree_is_leaf.c](./4-binary_tree_is_leaf.c): A function that checks if a node is a leaf.
@@ -140,4 +140,13 @@ typedef struct binary_tree_s heap_t;
   - If `node` is `NULL`, return `0`
 
 **5. Is root**
-- 
+- [5-binary_tree_is_root.c](./5-binary_tree_is_root.c): A function that checks if a given node is a root.
+  -  The parameter `node` is a pointer to the node to check
+  -  it returns `1` if `node` is a root, otherwise `0`
+  -  If `node` is `NULL`, it returns `0`.
+
+**6. Pre-order traversal**
+- [6-binary_tree_preorder.c](./6-binary_tree_preorder.c): A function that goes through a binary tree using pre-order traversal.
+  - The parameter `tree` is a pointer to the root node of the tree to traverse
+  - And `func` is a pointer to a function to call for each node. The value in the node is passe as a parameter to this function.
+  - If `tree` or `func` is `NULL`, does nothing
