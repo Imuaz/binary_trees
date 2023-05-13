@@ -199,3 +199,8 @@ typedef struct binary_tree_s heap_t;
 - [15-binary_tree_is_full.c](./15-binary_tree_is_full.c): A function that checks if a binary tree is full.
   - The parameter`tree` is a pointer to the root node of the tree to check
   - If `tree` is `NULL`, the function returns `0`
+
+**16. Is perfect**
+- [16-binary_tree_is_perfect.c](./16-binary_tree_is_perfect.c): A function that checks if a binary tree is perfect.
+  - The parameter `tree` is a pointer to the root node of the tree to check
+  - If `tree` is `NULL`, the function returns `0`
