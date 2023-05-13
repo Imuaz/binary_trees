@@ -121,3 +121,10 @@ typedef struct binary_tree_s heap_t;
   - And `value` is the value to store in the new node
   - it returns a pointer to the created node, or `NULL` on failure or if `parent` is `NULL`.
   - If `parent` already has a left-child, the new node takes its place, and the old left-child is set as the left-child of the new node.
+
+**2. Insert right**
+- [2-binary_tree_insert_right.c](./2-binary_tree_insert_right.c): A function that inserts a node as the right-child of another node.
+  - The parameter `parent` is a pointer to the node to insert the right-child in
+  - And `value` is the value to store in the new node
+  - It returns a pointer to the created node, or `NULL` on failure or if `parent` is `NULL`
+  - If `parent` already has a right-child, the new takes its place, and the old right-child is set as the right-child of the new node.
