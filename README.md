@@ -189,3 +189,8 @@ typedef struct binary_tree_s heap_t;
   - The parameter `tree` is a pointer to the root node of the tree to count the number of nodes
   - If `tree` is `NULL`, the function returns `0`
   - A `NULL` pointer is not a node
+
+**14. Balance factor**
+- [14-binary_tree_balance.c](./14-binary_tree_balance.c): A function that measures the balance factor of a binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to measure the balance factor
+  - If `tree` is `NULL`, returns `0`
