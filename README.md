@@ -162,3 +162,8 @@ typedef struct binary_tree_s heap_t;
     - The parameter `tree` is a pointer to the root node of the tree to traverse
     - And `func` is a pointer to a function to call for each node. The value in the node is pass as a parameter to this function.
     - If `tree` or `func` is `NULL`, does nothing
+
+**9. Height**
+- [9-binary_tree_height.c](./9-binary_tree_height.c): A function that measures the height of a binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to measure the height.
+  - If `tree` is `NULL`, the function must returns `0`
