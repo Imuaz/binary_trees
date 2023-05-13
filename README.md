@@ -194,3 +194,8 @@ typedef struct binary_tree_s heap_t;
 - [14-binary_tree_balance.c](./14-binary_tree_balance.c): A function that measures the balance factor of a binary tree.
   - The parameter `tree` is a pointer to the root node of the tree to measure the balance factor
   - If `tree` is `NULL`, returns `0`
+
+**15. Is full**
+- [15-binary_tree_is_full.c](./15-binary_tree_is_full.c): A function that checks if a binary tree is full.
+  - The parameter`tree` is a pointer to the root node of the tree to check
+  - If `tree` is `NULL`, the function returns `0`
