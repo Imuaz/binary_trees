@@ -234,4 +234,9 @@ typedef struct binary_tree_s heap_t;
 **21. Is complete**
 - [102-binary_tree_is_complete.c](./102-binary_tree_is_complete.c): A function that checks if a binary tree is complete.
   - The parameter `tree` is a pointer to the root node of the tree to check
-  - If `tree` is `NULL`, the function returns `0` 
+  - If `tree` is `NULL`, the function returns `0`
+
+**22. Rotate left**
+- [103-binary_tree_rotate_left.c](./103-binary_tree_rotate_left.c): A function that performs a left-rotation on a binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to rotate
+  - the function returns a pointer to the new root node of the tree once rotated
