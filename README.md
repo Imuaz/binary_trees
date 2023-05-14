@@ -23,7 +23,6 @@ The project covered several key aspects of binary trees, including their definit
 - It is not allowed to use global variables
 - No more than 5 functions per file
 - It is allowed to use the standard library
-- The prototypes of all functions should be included in a header file called `binary_trees.h`
 - All header files should be include guarded
 
 ## Header files:open_file_folder:
@@ -211,3 +210,10 @@ typedef struct binary_tree_s heap_t;
   - It returns a pointer to the sibling node
   - If `node` is `NULL` or the parent is `NULL`, it returns `NULL`
   - If `nod`d has no sibling, it return `NULL`
+
+**18. Uncle**
+- [18-binary_tree_uncle.c](./18-binary_tree_uncle.c): A function that finds the uncle of a node.
+  - The parameter `node` is a pointer to the node to find the uncle
+  - It returns a pointer to the uncle node
+  - If `node` is `NULL`, it returnds `NULL`
+  - If `node` has no uncle, it returns `NULL`
