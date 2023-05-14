@@ -240,3 +240,8 @@ typedef struct binary_tree_s heap_t;
 - [103-binary_tree_rotate_left.c](./103-binary_tree_rotate_left.c): A function that performs a left-rotation on a binary tree.
   - The parameter `tree` is a pointer to the root node of the tree to rotate
   - the function returns a pointer to the new root node of the tree once rotated
+
+**23. Rotate right**
+- [104-binary_tree_rotate_right.c](./104-binary_tree_rotate_right.c): A function that performs a right-rotation on a binary tree.
+  - The parameter `tree` is a pointer to the root node of the tree to rotate
+  - the function returns a pointer to the new root node of the tree once rotated
