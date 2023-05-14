@@ -217,3 +217,10 @@ typedef struct binary_tree_s heap_t;
   - It returns a pointer to the uncle node
   - If `node` is `NULL`, it returnds `NULL`
   - If `node` has no uncle, it returns `NULL`
+
+**19. Lowest common ancestor**
+- [100-binary_trees_ancestor.c](./100-binary_trees_ancestor.c): A function that finds the lowest common ancestor of two nodes.
+  - The parameter `first` is a pointer to the first node
+  - And `second` is a pointer to the second node
+  - the function returns a pointer to the lowest common ancestor node of the two given nodes
+  - If no common ancestor was found, the function returns `NULL`
