@@ -245,3 +245,14 @@ typedef struct binary_tree_s heap_t;
 - [104-binary_tree_rotate_right.c](./104-binary_tree_rotate_right.c): A function that performs a right-rotation on a binary tree.
   - The parameter `tree` is a pointer to the root node of the tree to rotate
   - the function returns a pointer to the new root node of the tree once rotated
+
+**24. Is BST**
+- [110-binary_tree_is_bst.c](./110-binary_tree_is_bst.c): A function that checks if a binary tree is a valid [Binary Search Tree](https://en.m.wikipedia.org/wiki/Binary_search_tree)
+  - The parameter `tree` is a pointer to the root node of the tree to check
+  - the function returns `1` if `tree` is a valid BST, and `0` otherwise
+  - If `tree` is `NULL`, it returns `0`
+- Properties of a Binary Search Tree:
+  - The left subtree of a node contains only nodes with values less than the node’s value
+  - The right subtree of a node contains only nodes with values greater than the node’s value
+  - The left and right subtree each must also be a binary search tree
+  - There must be no duplicate values
