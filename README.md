@@ -204,3 +204,10 @@ typedef struct binary_tree_s heap_t;
 - [16-binary_tree_is_perfect.c](./16-binary_tree_is_perfect.c): A function that checks if a binary tree is perfect.
   - The parameter `tree` is a pointer to the root node of the tree to check
   - If `tree` is `NULL`, the function returns `0`
+
+**17. Sibling**
+- [17-binary_tree_sibling.c](./17-binary_tree_sibling.c): A function that finds the sibling of a node.
+  - The parameter `node` is a pointer to the node to find the sibling
+  - It returns a pointer to the sibling node
+  - If `node` is `NULL` or the parent is `NULL`, it returns `NULL`
+  - If `nod`d has no sibling, it return `NULL`
