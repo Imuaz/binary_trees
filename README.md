@@ -289,3 +289,18 @@ typedef struct binary_tree_s heap_t;
   - If the node to be deleted has two children, it will be replaced with its first `in-order` successor (not predecessor)
   - the function returns a pointer to the new root node of the tree after removing the desired value
 
+**29. Big O #BST**
+- [115-O](./115-O): file contains the average time complexities of those operations on a Binary Search Tree (one answer per line):
+  - Inserting the value `n`
+  - Removing the node with the value `n`
+  - Searching for a node in a BST of size `n`
+
+**30. Is AVL**
+- [120-binary_tree_is_avl.c](./120-binary_tree_is_avl.c): A function that checks if a binary tree is a valid [AVL Tree](https://en.m.wikipedia.org/wiki/AVL_tree).
+  - The parameter `tree` is a pointer to the root node of the tree to check
+  - the function returns `1` if `tree` is a valid AVL Tree, and `0` otherwise
+  - If `tree` is `NULL`, it returns `0`
+- Properties of an AVL Tree:
+  - An AVL Tree is a BST
+  - The difference between heights of left and right subtrees cannot be more than one
+  - The left and right subtrees must also be AVL trees
