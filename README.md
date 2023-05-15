@@ -321,3 +321,13 @@ typedef struct binary_tree_s heap_t;
   - the function returns a pointer to the root node of the created AVL tree, or `NULL` on failure
   - If a value of the array is already present in the tree, the value will be ignored
 - the files `121-avl_insert.c`, `0-binary_tree_node.c`, `14-binary_tree_balance.c`, `103-binary_tree_rotate_left.c` and `104-binary_tree_rotate_right.c` will be compiled during the correction
+
+**33. AVL - Remove**
+- [123-avl_remove.c](./123-avl_remove.c): A function that removes a node from an AVL tree
+  - The parameter `root` is a pointer to the root node of the tree for removing a node
+  - And `value` is the value to remove in the tree
+  - Once located, the node containing a value equals to value will be removed and freed
+  - If the node to be deleted has two children, it will be replaced with its first `in-order successor` (not predecessor)
+  - After deletion of the desired node, the tree will be rebalanced if necessary
+  - the function returns a pointer to the new root node of the tree after removing the desired value, and after rebalancing
+- The files `14-binary_tree_balance.c`, `103-binary_tree_rotate_left.c` and `104-binary_tree_rotate_right.c` will be compiled during the correction
