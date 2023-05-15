@@ -256,3 +256,12 @@ typedef struct binary_tree_s heap_t;
   - The right subtree of a node contains only nodes with values greater than the node’s value
   - The left and right subtree each must also be a binary search tree
   - There must be no duplicate values
+
+**25. BST - Insert**
+- [111-bst_insert.c](./111-bst_insert.c): A function that inserts a value in a Binary Search Tree
+  - The parameter `tree` is a double pointer to the root node of the BST to insert the value
+  - And `value` is the value to store in the node to be inserted
+  - the function returns a pointer to the created node, or `NULL` on failure
+  - If the address stored in tree is `NULL`, the created node becomes the root node.
+  - If the value is already present in the tree, it is ignored
+- the file `0-binary_tree_node.c` can be compiled during the correction
