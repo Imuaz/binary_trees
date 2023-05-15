@@ -9,13 +9,13 @@
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *new;
+	bst_t *new, *curr, *parent;
+
+	curr = *tree;
+	parent = NULL;
 
 	if (tree == NULL)
 		return (NULL);
-
-	bst_t *curr = *tree;
-	bst_t *parent = NULL;
 
 	while (curr != NULL)
 	{
