@@ -36,7 +36,12 @@ bst_t *bst_remove(bst_t *root, int value)
 		root->right = bst_remove(root->right, value);
 	else
 	{
-		if (root->left == NULL)
+		if (root->left == NULL && root->right == NULL)
+		{
+			free(root);
+			return (NULL);
+		}
+		else if (root->left == NULL)
 		{
 			temp = root->right;
 			free(root);
