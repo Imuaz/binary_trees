@@ -331,3 +331,13 @@ typedef struct binary_tree_s heap_t;
   - After deletion of the desired node, the tree will be rebalanced if necessary
   - the function returns a pointer to the new root node of the tree after removing the desired value, and after rebalancing
 - The files `14-binary_tree_balance.c`, `103-binary_tree_rotate_left.c` and `104-binary_tree_rotate_right.c` will be compiled during the correction
+
+**34. AVL - From sorted array**
+- [124-sorted_array_to_avl.c](./124-sorted_array_to_avl.c): A function that builds an AVL tree from an array
+  - The parameter `array` is a pointer to the first element of the array to be converted
+  - And `size` is the number of element in the array
+  - the function returns a pointer to the root node of the created AVL tree, or `NULL` on failure
+  - it is assume that there will be no duplicate value in the array
+  - it does not rotate
+  - it is reqired only 2 functions in the file
+- The file `0-binary_tree_node.c` will be compiled during the correction
