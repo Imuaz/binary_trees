@@ -280,3 +280,12 @@ typedef struct binary_tree_s heap_t;
   - And `value` is the value to search in the tree
   - the function returns a pointer to the node containing a value equals to `value`
   - If `tree` is `NULL` or if nothing is found, it returns `NULL`
+
+**28. BST - Remove**
+- [114-bst_remove.c](./114-bst_remove.c): A function that removes a node from a Binary Search Tree
+  - The parameter `root` is a pointer to the root node of the tree where the node will be removed
+  - And `value` is the value to remove in the tree
+  - once located, the node containing a value equals to `value` will be removed and freed
+  - If the node to be deleted has two children, it will be replaced with its first `in-order` successor (not predecessor)
+  - the function returns a pointer to the new root node of the tree after removing the desired value
+
