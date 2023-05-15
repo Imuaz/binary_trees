@@ -313,3 +313,11 @@ typedef struct binary_tree_s heap_t;
   - If the address stored in tree is `NULL`, the created node becomes the root node.
   - The resulting tree after insertion, will be a balanced AVL Tree
 - The files `14-binary_tree_balance.c`, `103-binary_tree_rotate_left.c`, `104-binary_tree_rotate_right.c` and `0-binary_tree_node.c` will be compiled during the correction
+
+**32. AVL - Array to AVL**
+- [122-array_to_avl.c](./122-array_to_avl.c): A function that builds an AVL tree from an array.
+  - The parameter `array` is a pointer to the first element of the array to be converted
+  - And `size` is the number of element in the array
+  - the function returns a pointer to the root node of the created AVL tree, or `NULL` on failure
+  - If a value of the array is already present in the tree, the value will be ignored
+- the files `121-avl_insert.c`, `0-binary_tree_node.c`, `14-binary_tree_balance.c`, `103-binary_tree_rotate_left.c` and `104-binary_tree_rotate_right.c` will be compiled during the correction
