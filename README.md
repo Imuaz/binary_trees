@@ -265,3 +265,11 @@ typedef struct binary_tree_s heap_t;
   - If the address stored in tree is `NULL`, the created node becomes the root node.
   - If the value is already present in the tree, it is ignored
 - the file `0-binary_tree_node.c` can be compiled during the correction
+
+**26. BST - Array to BST**
+- [112-array_to_bst.c](./112-array_to_bst.c): A function that builds a Binary Search Tree from an array
+  - The parameter `array` is a pointer to the first element of the array to be converted
+  - And `size` is the number of element in the array
+  - the function returns a pointer to the root node of the created BST, or `NULL` on failure
+  - If a value of the array is already present in the tree, the value wil be ignored
+- The files `111-bst_insert.c` and `0-binary_tree_node.c` will be compiled during the correction
