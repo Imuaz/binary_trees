@@ -9,6 +9,8 @@
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
+	bst_t *new;
+
 	if (tree == NULL)
 		return (NULL);
 
@@ -26,8 +28,7 @@ bst_t *bst_insert(bst_t **tree, int value)
 		else
 			return (NULL); /* Value already exists, ignore */
 	}
-
-	bst_t *new = binary_tree_node(parent, value);
+new = binary_tree_node(parent, value);
 
 	if (new == NULL)
 		return (NULL);
