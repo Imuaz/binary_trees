@@ -304,3 +304,12 @@ typedef struct binary_tree_s heap_t;
   - An AVL Tree is a BST
   - The difference between heights of left and right subtrees cannot be more than one
   - The left and right subtrees must also be AVL trees
+
+**31. AVL - Insert**
+- [121-avl_insert.c](./121-avl_insert.c): A function that inserts a value in an AVL Tree
+  - The parameter `tree` is a double pointer to the root node of the AVL tree for inserting the value
+  - And `value` is the value to store in the node to be inserted
+  - the function returns a pointer to the created node, or `NULL` on failure
+  - If the address stored in tree is `NULL`, the created node becomes the root node.
+  - The resulting tree after insertion, will be a balanced AVL Tree
+- The files `14-binary_tree_balance.c`, `103-binary_tree_rotate_left.c`, `104-binary_tree_rotate_right.c` and `0-binary_tree_node.c` will be compiled during the correction
