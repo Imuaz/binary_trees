@@ -273,3 +273,10 @@ typedef struct binary_tree_s heap_t;
   - the function returns a pointer to the root node of the created BST, or `NULL` on failure
   - If a value of the array is already present in the tree, the value wil be ignored
 - The files `111-bst_insert.c` and `0-binary_tree_node.c` will be compiled during the correction
+
+**27. BST - Search**
+- [113-bst_search.c](./113-bst_search.c): A function that searches for a value in a Binary Search Tree
+  - The parameter `tree` is a pointer to the root node of the BST to search
+  - And `value` is the value to search in the tree
+  - the function returns a pointer to the node containing a value equals to `value`
+  - If `tree` is `NULL` or if nothing is found, it returns `NULL`
