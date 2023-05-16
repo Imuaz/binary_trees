@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INIT_NODE {0, NULL, NULL, NULL}
 /**
  * struct binary_tree_s - Binary tree node
  *
@@ -66,5 +67,10 @@ heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 void binary_tree_print(const binary_tree_t *);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
+
+bst_t *swap_nodes(bst_t *node1, bst_t *node2);
+char *convert_to_string(unsigned long int num, int base, int lowercase);
+size_t get_binary_tree_size(const binary_tree_t *tree);
+void insert_node(heap_t **root, heap_t *node);
 
 #endif /* BINARY_TREES_H */
