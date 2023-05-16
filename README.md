@@ -25,6 +25,9 @@ The project covered several key aspects of binary trees, including their definit
 - It is allowed to use the standard library
 - All header files should be include guarded
 
+## Tests:100::heavy_check_mark:
+- [tests](./tests): A folder containing the `main.c` files provided by ALX as examples for testing purposes.
+
 ## Header files:open_file_folder:
 - [binary_trees.h](./binary_trees.h): Header file containing the prototypes of all functions and the data structures and types definition for binary trees.
 
@@ -374,3 +377,24 @@ typedef struct binary_tree_s heap_t;
   - And `size` is the number of element in the array
   - the function returns a pointer to the root node of the created Binary Heap, or `NULL` on failure
 - The files `131-heap_insert.c` and `0-binary_tree_node.c` will be compiled during the correction
+
+**39. Heap - Extract**
+- [133-heap_extract.c](./133-heap_extract.c): A function that extracts the root node of a Max Binary Heap
+  - The parameter `root` is a double pointer to the root node of heap
+  - the function returns the value stored in the root node
+  - The root node will be freed and replace with the last `level-order` node of the heap
+  - Once replaced, the heap will be rebuilt if necessary
+  - If the function fails, it returns `0`
+
+**40. Heap - Sort**
+- [134-heap_to_sorted_array.c](./134-heap_to_sorted_array.c): A function that converts a Binary Max Heap to a sorted array of integers.
+  - The parameter `heap` is a pointer to the root node of the heap to convert
+  - And `size` is an address to store the size of the array
+  - it is assume `size` is a valid address
+  - Since we are using Max Heap, the returned array will be sorted in descending order
+
+**41. Big O #Binary Heap**
+- [135-O](./135-O): file that contains the average time complexities of those operations on a Binary Heap (one answer per line):
+  - Inserting the value `n`
+  - Extracting the root node
+  - Searching for a node in a binary heap of size `n`
