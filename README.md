@@ -357,3 +357,13 @@ typedef struct binary_tree_s heap_t;
   - It’s a complete tree
   - In a Max Binary Heap, the value at root must be maximum among all values present in Binary Heap
   - The last property must be recursively true for all nodes in Binary Tree
+
+**37. Heap - Insert**
+- [131-heap_insert.c](./131-heap_insert.c): A function that inserts a value in Max Binary Heap.
+  - The parameter `root` is a double pointer to the root node of the Heap to insert the value
+  - And `value` is the value to store in the node to be inserted
+  - the function returns a pointer to the created node, or `NULL` on failure
+  - If the address stored in `root` is `NULL`, the created node becomes the root node.
+  - it respects a `Max Heap` ordering
+  - it is allowed to have up to 6 functions in the file
+- The file `0-binary_tree_node.c` will be compiled during the correction
