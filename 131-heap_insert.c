@@ -142,7 +142,7 @@ void insert_node(heap_t **root, heap_t *node)
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-	heap_t *new_node, *parent;
+	heap_t *new_node, *parent, *current;
 
 	if (!root)
 		return (NULL);
@@ -158,7 +158,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		return (new_node);
 	}
 	insert_node(root, new_node);
-	heap_t *current = new_node;
+	current = new_node;
 
 	while (current->parent && current->n > current->parent->n)
 	{
