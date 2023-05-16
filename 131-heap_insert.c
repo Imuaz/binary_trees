@@ -15,7 +15,6 @@ bst_t *swap_nodes(bst_t *node1, bst_t *node2)
 	temp_node.parent = node1->parent;
 	temp_node.left = node1->left;
 	temp_node.right = node1->right;
-
 	node1->parent = node2;
 	node1->left = node2->left;
 	node1->right = node2->right;
@@ -33,7 +32,6 @@ bst_t *swap_nodes(bst_t *node1, bst_t *node2)
 		else
 			temp_node.parent->right = node2;
 	}
-
 	if (node2 == temp_node.left)
 	{
 		node2->left = node1;
@@ -48,15 +46,14 @@ bst_t *swap_nodes(bst_t *node1, bst_t *node2)
 		if (temp_node.left)
 			temp_node.left->parent = node2;
 	}
-
 	while (node2->parent)
 		node2 = node2->parent;
-
 	return (node2);
 }
 
 /**
- * convert_to_string - Converts a number to a string representation in a given base
+ * convert_to_string - Converts a number to a string representation
+ * in a given base
  * @num: The number to convert
  * @base: The base to convert the number to
  * @lowercase: Flag to indicate if hexadecimal values need to be lowercase
@@ -92,7 +89,8 @@ size_t get_binary_tree_size(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	return (1 + get_binary_tree_size(tree->left) + get_binary_tree_size(tree->right));
+	return (1 + get_binary_tree_size(tree->left) +
+			get_binary_tree_size(tree->right));
 }
 
 /**
