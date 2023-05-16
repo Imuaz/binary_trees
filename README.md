@@ -367,3 +367,10 @@ typedef struct binary_tree_s heap_t;
   - it respects a `Max Heap` ordering
   - it is allowed to have up to 6 functions in the file
 - The file `0-binary_tree_node.c` will be compiled during the correction
+
+**38. Heap - Array to Binary Heap**
+- [132-array_to_heap.c](./132-array_to_heap.c): A function that builds a Max Binary Heap tree from an array
+  - The parameter `array` is a pointer to the first element of the array to be converted
+  - And `size` is the number of element in the array
+  - the function returns a pointer to the root node of the created Binary Heap, or `NULL` on failure
+- The files `131-heap_insert.c` and `0-binary_tree_node.c` will be compiled during the correction
