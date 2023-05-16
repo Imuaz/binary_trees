@@ -11,10 +11,10 @@ size_t binary_tree_size(const binary_tree_t *tree);
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-        return 0;
+	if (tree == NULL)
+		return (0);
 
-    return 1 + binary_tree_size(tree->left) + binary_tree_size(tree->right);
+	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 }
 
 /**
@@ -24,9 +24,11 @@ size_t binary_tree_size(const binary_tree_t *tree)
  */
 void swap(heap_t *a, heap_t *b)
 {
-    int temp = a->n;
-    a->n = b->n;
-    b->n = temp;
+	int temp;
+
+	temp = a->n;
+	a->n = b->n;
+	b->n = temp;
 }
 
 /**
@@ -37,60 +39,60 @@ void swap(heap_t *a, heap_t *b)
  */
 heap_t *find_last_node(heap_t *root, size_t size)
 {
-    size_t index = size;
-    size_t level = 0;
+	size_t index, level;
 
-    while (index > 0)
-    {
-        index >>= 1;
-        level++;
-    }
+	index = size;
+	level = 0;
 
-    index = size - (1 << (level - 1));
+	while (index > 0)
+	{
+		index >>= 1;
+		level++;
+	}
+	index = size - (1 << (level - 1));
 
-    while (level > 1)
-    {
-        if (index & 1)
-            root = root->right;
-        else
-            root = root->left;
+	while (level > 1)
+	{
+		if (index & 1)
+			root = root->right;
+		else
+			root = root->left;
 
-        index >>= 1;
-        level--;
-    }
-
-    return root;
+		index >>= 1;
+		level--;
+	}
+	return (root);
 }
 
 /**
- * heapify_down - restores the max heap property by moving the node down the heap
+ * heapify_down - restores the max heap property by moving the
+ * node down the heap
  * @root: pointer to the root node of the heap
  * Return: pointer to the root node of the modified heap
  */
 heap_t *heapify_down(heap_t *root)
 {
-    heap_t *current = root;
+	heap_t *current, *max, *left, *right;
 
-    while (1)
-    {
-        heap_t *max = current;
-        heap_t *left = current->left;
-        heap_t *right = current->right;
+	current = root;
+	while (1)
+	{
+		max = current;
+		left = current->left;
+		right = current->right;
 
-        if (left && left->n > max->n)
-            max = left;
+		if (left && left->n > max->n)
+			max = left;
 
-        if (right && right->n > max->n)
-            max = right;
+		if (right && right->n > max->n)
+			max = right;
 
-        if (max == current)
-            break;
-
-        swap(current, max);
-        current = max;
-    }
-
-    return root;
+		if (max == current)
+			break;
+		swap(current, max);
+		current = max;
+	}
+	return (root);
 }
 
 /**
@@ -100,30 +102,34 @@ heap_t *heapify_down(heap_t *root)
  */
 int heap_extract(heap_t **root)
 {
-    if (root == NULL || *root == NULL)
-        return 0;
+	int value;
+	size_t size;
+	heap_t *last_node;
 
-    int value = (*root)->n;
-    size_t size = binary_tree_size(*root);
+	if (root == NULL || *root == NULL)
+		return (0);
 
-    if (size == 1)
-    {
-        free(*root);
-        *root = NULL;
-        return value;
-    }
+	value = (*root)->n;
+	size = binary_tree_size(*root);
 
-    heap_t *last_node = find_last_node(*root, size);
-    swap(*root, last_node);
+	if (size == 1)
+	{
+		free(*root);
+		*root = NULL;
+		return (value);
+	}
 
-    if (last_node->parent->left == last_node)
-        last_node->parent->left = NULL;
-    else
-        last_node->parent->right = NULL;
+	last_node = find_last_node(*root, size);
+	swap(*root, last_node);
 
-    free(last_node);
+	if (last_node->parent->left == last_node)
+		last_node->parent->left = NULL;
+	else
+		last_node->parent->right = NULL;
 
-    *root = heapify_down(*root);
+	free(last_node);
 
-    return value;
+	*root = heapify_down(*root);
+
+	return (value);
 }
