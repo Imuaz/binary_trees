@@ -341,3 +341,19 @@ typedef struct binary_tree_s heap_t;
   - it does not rotate
   - it is reqired only 2 functions in the file
 - The file `0-binary_tree_node.c` will be compiled during the correction
+
+**35. Big O #AVL Tree**
+- [125-O](./125-O): file contains the average time complexities of those operations on an AVL Tree (one answer per line):
+  - Inserting the value `n`
+  - Removing the node with the value `n`
+  - Searching for a node in an AVL tree of size `n`
+
+**36. Is Binary heap**
+- [130-binary_tree_is_heap.c](./130-binary_tree_is_heap.c): A function that checks if a binary tree is a valid [Max Binary Heap](https://en.m.wikipedia.org/wiki/Binary_heap)
+  - The parameter `tree` is a pointer to the root node of the tree to check
+  - the function returns `1` if `tree` is a valid Max Binary Heap, and `0` otherwise
+  - If `tree` is `NULL`, it returns `0`
+- Properties of a Max Binary Heap:
+  - It’s a complete tree
+  - In a Max Binary Heap, the value at root must be maximum among all values present in Binary Heap
+  - The last property must be recursively true for all nodes in Binary Tree
