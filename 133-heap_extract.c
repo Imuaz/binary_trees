@@ -13,10 +13,10 @@ void swap(heap_t *node1, heap_t *node2);
  */
 size_t count_nodes(const binary_tree_t *root)
 {
-    if (root == NULL)
-        return 0;
+	if (root == NULL)
+		return (0);
 
-    return 1 + count_nodes(root->left) + count_nodes(root->right);
+	return (1 + count_nodes(root->left) + count_nodes(root->right));
 }
 
 /**
@@ -28,55 +28,58 @@ size_t count_nodes(const binary_tree_t *root)
  */
 heap_t *find_last_node(heap_t *root, size_t height, size_t level)
 {
-    if (root == NULL)
-        return NULL;
+	if (root == NULL)
+		return (NULL);
 
-    if (height == level)
-    {
-        if (root->left == NULL && root->right == NULL)
-            return root;
-        return NULL;
-    }
+	if (height == level)
+	{
+		if (root->left == NULL && root->right == NULL)
+			return (root);
 
-    if (root->right == NULL)
-        return find_last_node(root->left, height, level + 1);
+		return (NULL);
+	}
+	if (root->right == NULL)
+		return (find_last_node(root->left, height, level + 1));
+	if (count_nodes(root->right) == (size_t)(1 << (height - level - 1)))
 
-    if (count_nodes(root->right) == (size_t)(1 << (height - level - 1)))
-        return find_last_node(root->right, height, level + 1);
-    return find_last_node(root->left, height, level + 1);
+		return (find_last_node(root->right, height, level + 1));
+
+	return (find_last_node(root->left, height, level + 1));
 }
 
- /**
- * heapify_down - restores the max heap property by moving the node down the heap
+/**
+ * heapify_down - restores the max heap property by moving the
+ * node down the heap
  * @root: pointer to the root node of the heap
  * Return: pointer to the root node of the modified heap
  */
 heap_t *heapify_down(heap_t *root)
 {
-    heap_t *current = root;
+	int temp;
+	heap_t *max, *left, *right;
+	heap_t *current = root;
 
-    while (1) {
-        heap_t *max = current;
-        heap_t *left = current->left;
-        heap_t *right = current->right;
+	while (1)
+	{
+		max = current;
+		left = current->left;
+		right = current->right;
 
-        if (left && left->n > max->n)
-            max = left;
+		if (left && left->n > max->n)
+			max = left;
 
-        if (right && right->n > max->n)
-            max = right;
+		if (right && right->n > max->n)
+			max = right;
 
-        if (max == current)
-            break;
+		if (max == current)
+			break;
 
-        int temp = current->n;
-        current->n = max->n;
-        max->n = temp;
-
-        current = max;
-    }
-
-    return root;
+		temp = current->n;
+		current->n = max->n;
+		max->n = temp;
+		current = max;
+	}
+	return (root);
 }
 
 /**
@@ -86,17 +89,16 @@ heap_t *heapify_down(heap_t *root)
  */
 size_t get_tree_height(const binary_tree_t *root)
 {
-    size_t left_height, right_height;
+	size_t left_height, right_height;
 
-    if (root == NULL)
-        return 0;
+	if (root == NULL)
+		return (0);
 
-    left_height = get_tree_height(root->left);
-    right_height = get_tree_height(root->right);
+	left_height = get_tree_height(root->left);
+	right_height = get_tree_height(root->right);
 
-    return (left_height > right_height ? left_height : right_height) + 1;
+	return ((left_height > right_height ? left_height : right_height) + 1);
 }
-
 
 /**
  * heap_extract - extracts the root node of a Max Binary Heap
@@ -105,52 +107,50 @@ size_t get_tree_height(const binary_tree_t *root)
  */
 int heap_extract(heap_t **root)
 {
-    heap_t *last_node, *temp, *current;
-    int value;
+	int value;
+	heap_t *last_node, *temp, *current;
 
-    if (root == NULL || *root == NULL)
-        return 0;
+	if (root == NULL || *root == NULL)
+		return (0);
 
-    current = *root;
-    value = current->n;
+	current = *root;
+	value = current->n;
 
-    last_node = find_last_node(*root, get_tree_height(*root), 1);
+	last_node = find_last_node(*root, get_tree_height(*root), 1);
+	while (current->left && current->right)
+	{
+		if (count_nodes(current->left) > count_nodes(current->right))
+			current = current->left;
+		else
+			current = current->right;
+	}
+	if (last_node->parent)
+	{
+		if (last_node->parent->left == last_node)
+			last_node->parent->left = NULL;
+		else
+			last_node->parent->right = NULL;
 
-    while (current->left && current->right)
-    {
-        if (count_nodes(current->left) > count_nodes(current->right))
-            current = current->left;
-        else
-            current = current->right;
-    }
+		temp = *root;
+		*root = last_node;
+		last_node->parent = temp->parent;
+		last_node->left = temp->left;
+		last_node->right = temp->right;
 
-    if (last_node->parent)
-    {
-        if (last_node->parent->left == last_node)
-            last_node->parent->left = NULL;
-        else
-            last_node->parent->right = NULL;
+		if (temp->left)
+			temp->left->parent = last_node;
 
-        temp = *root;
-        *root = last_node;
-        last_node->parent = temp->parent;
-        last_node->left = temp->left;
-        last_node->right = temp->right;
+		if (temp->right)
+			temp->right->parent = last_node;
 
-        if (temp->left)
-            temp->left->parent = last_node;
-        if (temp->right)
-            temp->right->parent = last_node;
+		free(temp);
 
-        free(temp);
-
-        *root = heapify_down(*root);
-    }
-    else
-    {
-        free(*root);
-        *root = NULL;
-    }
-
-    return value;
+		*root = heapify_down(*root);
+	}
+	else
+	{
+		free(*root);
+		*root = NULL;
+	}
+	return (value);
 }
