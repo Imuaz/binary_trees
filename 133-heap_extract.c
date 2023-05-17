@@ -121,7 +121,6 @@ heap_t *perc_down(heap_t *node)
  * @heap_root: double pointer to root of heap
  * Return: value stored in the root node
  */
-
 int heap_extract(heap_t **heap_root)
 {
 	size_t bin_size, i;
@@ -135,9 +134,13 @@ int heap_extract(heap_t **heap_root)
 	bin_size = binary_tree_size(*heap_root);
 	bin_rep = &bin_buff[49];
 	*bin_rep = 0;
+
 	if (bin_size == 1)
 		EXTRACT_NODE_VALUE(node1, extracted_value);
-	UPDATE_BINARY_REPRESENTATION(bin_rep, bin_size);
+	do {
+		*--bin_rep = (bin_size % 2) + '0';
+		bin_size /= 2;
+	} while (bin_size);
 	for (i = 1; i < strlen(bin_rep); i++)
 	{
 		bin_digit = bin_rep[i];
@@ -155,9 +158,7 @@ int heap_extract(heap_t **heap_root)
 			node1 = node1->left;
 	}
 	if (strlen(bin_rep) == 0)
-	{
 		EXTRACT_NODE_VALUE(node1, extracted_value);
-	}
 	heap_head = *heap_root;
 	heap_head = swap_head(heap_head, node1);
 	extracted_value = heap_head->n;
