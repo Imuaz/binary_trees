@@ -1,5 +1,5 @@
 #include "binary_trees.h"
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 /**
  * swap - swaps two nodes in binary tree
  * @a: first node
@@ -118,53 +118,48 @@ heap_t *perc_down(heap_t *node)
 
 /**
  * heap_extract - extracts the root node of a Max Binary Heap
- * @root: double pointer to root of tree
+ * @heap_root: double pointer to root of heap
  * Return: value stored in the root node
  */
-int heap_extract(heap_t **root)
+int heap_extract(heap_t **heap_root)
 {
-	size_t size, i;
-	char *binary, c, buffer[50];
-	int res;
-	heap_t *tmp, *head;
+	size_t bin_size, i;
+	char bin_buff[50], *bin_rep, bin_digit;
+	int extracted_value;
+	heap_t *node1, *node2, *heap_head;
 
-	if (!root || !*root)
-		return (0);
-	tmp = *root;
-	size = binary_tree_size(*root);
-	binary = &buffer[49];
-	*binary = 0;
-	if (size == 1) {
-		res = tmp->n;
-		free(tmp);
-		*root = NULL;
-		return (res); }
-	do {
-		*--binary = (size % 2) + '0';
-		size /= 2;
-	} while (size);
-	for (i = 1; i < strlen(binary); i++) {
-		c = binary[i];
-		if (i == strlen(binary) - 1) {
-			if (c == '1') {
-				tmp = tmp->right;
-				break; }
-			else if (c == '0') {
-				tmp = tmp->left;
-				break;
-			}
+	CHECK_HEAP_ROOT(heap_root);
+	node1 = *heap_root;
+	bin_size = binary_tree_size(*heap_root);
+	bin_rep = &bin_buff[49];
+	*bin_rep = 0;
+
+	if (bin_size == 1)
+		EXTRACT_NODE_VALUE(node1, extracted_value);
+UPDATE_BINARY_REPRESENTATION(bin_rep, bin_size);
+
+	for (i = 1; i < strlen(bin_rep); i++)
+	{
+		bin_digit = bin_rep[i];
+		if (i == strlen(bin_rep) - 1)
+		{
+			if (bin_digit == '1')
+				node1 = node1->right;
+			else if (bin_digit == '0')
+				node1 = node1->left;
+			break;
 		}
-		if (c == '1')
-			tmp = tmp->right;
-		else if (c == '0')
-			tmp = tmp->left;
+		if (bin_digit == '1')
+			node1 = node1->right;
+		else if (bin_digit == '0')
+			node1 = node1->left;
 	}
-	head = *root;
-	head = swap_head(head, tmp);
-	res = head->n;
-	free(head);
-	*root = tmp;
-	tmp = perc_down(tmp);
-	*root = tmp;
-	return (res);
+	heap_head = *heap_root;
+	heap_head = swap_head(heap_head, node1);
+	extracted_value = heap_head->n;
+	free(heap_head);
+	*heap_root = node1;
+	node1 = perc_down(node1);
+	*heap_root = node1;
+	return (extracted_value);
 }

@@ -5,6 +5,30 @@
 #include <stdlib.h>
 
 #define INIT_NODE {0, NULL, NULL, NULL}
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+#define CHECK_HEAP_ROOT(heap_root) \
+	do { \
+		if (!(heap_root) || !*(heap_root)) \
+			return (0); \
+	} while (0)
+
+#define EXTRACT_NODE_VALUE(node, value) \
+	do { \
+		(value) = (node)->n; \
+		free(node); \
+		(node) = NULL; \
+		return (value); \
+	} while (0)
+
+#define UPDATE_BINARY_REPRESENTATION(binary_rep, tree_size) \
+	do { \
+		do { \
+			*--(binary_rep) = ((tree_size) % 2) + '0'; \
+			(tree_size) /= 2; \
+		} while (tree_size); \
+	} while (0)
+
 /**
  * struct binary_tree_s - Binary tree node
  *
