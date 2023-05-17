@@ -126,7 +126,7 @@ int heap_extract(heap_t **heap_root)
 	size_t bin_size, i;
 	char bin_buff[50], *bin_rep, bin_digit;
 	int extracted_value;
-	heap_t *node1, *node2, *heap_head;
+	heap_t *node1, *heap_head;
 
 	CHECK_HEAP_ROOT(heap_root);
 	node1 = *heap_root;
