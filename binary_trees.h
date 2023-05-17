@@ -7,19 +7,36 @@
 #define INIT_NODE {0, NULL, NULL, NULL}
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
-#define CHECK_HEAP_ROOT(heap_root) \
-	do { \
-		if (!(heap_root) || !*(heap_root)) \
-			return (0); \
-	} while (0)
+#define SETUP_NODE_BLOCK { \
+	node1 = *root; \
+	bin_size = binary_tree_size(*root); \
+	bin_rep = &bin_buff[49]; \
+	*bin_rep = 0; \
+	}
 
-#define EXTRACT_NODE_VALUE(node, value) \
-	do { \
-		(value) = (node)->n; \
-		free(node); \
-		(node) = NULL; \
-		return (value); \
-	} while (0)
+#define CONVERT "0123456789ABCDEF"
+
+#define FREE_NODE_BLOCK { \
+extracted_value = node1->n; \
+	free(node1); \
+	*root = NULL; \
+} while (0)
+
+#define SWAP_HEAD_BLOCK { \
+	head = *root; \
+	head = swap_head(head, node1); \
+	extracted_value = head->n; \
+	free(head); \
+	*root = node1; \
+	node1 = perc_down(node1); \
+	*root = node1; \
+} while (0)
+
+#define CONVERT_LOOP { \
+	*--bin_rep = CONVERT[bin_size % 2]; \
+	bin_size /= 2; \
+} while (0)
+
 /**
  * struct binary_tree_s - Binary tree node
  *
