@@ -1,136 +1,170 @@
 #include "binary_trees.h"
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+/**
+ * swap - swaps two nodes in binary tree
+ * @a: first node
+ * @b: second node
+ * Return: pointer to root
+ */
+bst_t *swap(bst_t *a, bst_t *b)
+{
+	bst_t a_copy;
 
-void swap(heap_t *a, heap_t *b);
-heap_t *find_last_node(heap_t *root, size_t size);
-heap_t *heapify_down(heap_t *root);
-size_t binary_tree_size(const binary_tree_t *tree);
-#include <stdlib.h>
+	a_copy.n = a->n;
+	a_copy.parent = a->parent;
+	a_copy.left = a->left;
+	a_copy.right = a->right;
+	a->parent = b;
+	a->left = b->left;
+	a->right = b->right;
+
+	if (b->left)
+		b->left->parent = a;
+	if (b->right)
+		b->right->parent = a;
+	b->parent = a_copy.parent;
+	if (a_copy.parent)
+	{
+		if (a == a_copy.parent->left)
+			a_copy.parent->left = b;
+		else
+			a_copy.parent->right = b;
+	}
+	if (b == a_copy.left)
+	{
+		b->left = a;
+		b->right = a_copy.right;
+
+		if (a_copy.right)
+			a_copy.right->parent = b;
+	}
+	else if (b == a_copy.right)
+	{
+		b->right = a;
+		b->left = a_copy.left;
+		if (a_copy.left)
+			a_copy.left->parent = b;
+	}
+	while (b->parent)
+		b = b->parent;
+	return (b);
+}
 
 /**
  * binary_tree_size - measures the size of a binary tree
- * @tree: pointer to the root node of the tree
- * Return: size of the tree
+ * @tree: input binary tree
+ * Return: number of descendant child nodes
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	if (tree == NULL)
+	if (!tree)
 		return (0);
 
 	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 }
 
 /**
- * swap - swaps the values of two heap nodes
- * @a: first node
- * @b: second node
+ * swap_head - helper function to swap head and node
+ * @head: pointer to head
+ * @node: pointer to node
+ * Return: pointer to severed head of tree
  */
-void swap(heap_t *a, heap_t *b)
+heap_t *swap_head(heap_t *head, heap_t *node)
 {
-	int temp;
-
-	temp = a->n;
-	a->n = b->n;
-	b->n = temp;
+	if (node->parent->left == node)
+	{
+		node->parent->left = NULL;
+	}
+	else
+		node->parent->right = NULL;
+	node->parent = NULL;
+	node->left = head->left;
+	node->right = head->right;
+	if (head->left)
+		head->left->parent = node;
+	if (head->right)
+		head->right->parent = node;
+	return (head);
 }
 
 /**
- * find_last_node - finds the last node in the heap
- * @root: pointer to the root node of the heap
- * @size: size of the heap
- * Return: pointer to the last node
+ * perc_down - percolate head into correct position
+ * @node: pointer to head
+ * Return: pointer to head of tree
  */
-heap_t *find_last_node(heap_t *root, size_t size)
+heap_t *perc_down(heap_t *node)
 {
-	size_t index = size;
-	size_t level = 0;
+	int max;
+	heap_t *next = node;
 
-	while (index > 0)
+	if (!node)
+		return (NULL);
+	max = node->n;
+	if (node->left)
+		max = MAX(node->left->n, max);
+	if (node->right)
+		max = MAX(node->right->n, max);
+	if (node->left && max == node->left->n)
+		next = node->left;
+	else if (node->right && max == node->right->n)
+		next = node->right;
+	if (next != node)
 	{
-		index >>= 1;
-		level++;
+		swap(node, next);
+		perc_down(node);
 	}
-	index = size - (1 << (level - 1));
-
-	while (level > 1)
-	{
-		if (index & 1)
-			root = root->right;
-		else
-			root = root->left;
-
-		index >>= 1;
-		level--;
-	}
-	return root;
-}
-
-/**
- * heapify_down - restores the max heap property by moving
- * the node down the heap
- * @root: pointer to the root node of the heap
- * Return: pointer to the root node of the modified heap
- */
-heap_t *heapify_down(heap_t *root)
-{
-	heap_t *current, *max, *left, *right;
-
-	current = root;
-
-	while (1)
-	{
-		max = current;
-		left = current->left;
-		right = current->right;
-
-		if (left && left->n > max->n)
-			max = left;
-
-		if (right && right->n > max->n)
-			max = right;
-
-		if (max == current)
-			break;
-
-		swap(current, max);
-		current = max;
-	}
-	return (root);
+	return (next);
 }
 
 /**
  * heap_extract - extracts the root node of a Max Binary Heap
- * @root: double pointer to the root node of the heap
- * Return: value stored in the root node, or 0 on failure
+ * @root: double pointer to root of tree
+ * Return: value stored in the root node
  */
 int heap_extract(heap_t **root)
 {
-	int value;
-	size_t size;
-	heap_t *last_node;
+	size_t size, i;
+	char *binary, c, buffer[50];
+	int res;
+	heap_t *tmp, *head;
 
-	if (root == NULL || *root == NULL)
+	if (!root || !*root)
 		return (0);
-
-	value = (*root)->n;
+	tmp = *root;
 	size = binary_tree_size(*root);
-
-	if (size == 1)
-	{
-		free(*root);
+	binary = &buffer[49];
+	*binary = 0;
+	if (size == 1) {
+		res = tmp->n;
+		free(tmp);
 		*root = NULL;
-		return value;
+		return (res); }
+	do {
+		*--binary = (size % 2) + '0';
+		size /= 2;
+	} while (size);
+	for (i = 1; i < strlen(binary); i++) {
+		c = binary[i];
+		if (i == strlen(binary) - 1) {
+			if (c == '1') {
+				tmp = tmp->right;
+				break; }
+			else if (c == '0') {
+				tmp = tmp->left;
+				break;
+			}
+		}
+		if (c == '1')
+			tmp = tmp->right;
+		else if (c == '0')
+			tmp = tmp->left;
 	}
-
-	last_node = find_last_node(*root, size);
-	swap(*root, last_node);
-
-	if (last_node->parent->left == last_node)
-		last_node->parent->left = NULL;
-	else
-		last_node->parent->right = NULL;
-	free(last_node);
-
-	*root = heapify_down(*root);
-	
-	return (value);
+	head = *root;
+	head = swap_head(head, tmp);
+	res = head->n;
+	free(head);
+	*root = tmp;
+	tmp = perc_down(tmp);
+	*root = tmp;
+	return (res);
 }
