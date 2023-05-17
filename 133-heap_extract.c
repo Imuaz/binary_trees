@@ -8,7 +8,7 @@
  */
 bst_t *swap(bst_t *a, bst_t *b)
 {
-	bst_t a_copy;
+	bst_t a_copy = INIT_NODE;
 
 	a_copy.n = a->n;
 	a_copy.parent = a->parent;
